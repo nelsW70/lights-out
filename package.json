@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "framer-motion": "^2.6.10",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
-    "react-scripts": "2.0.5"
+    "react-scripts": "2.0.5",
+    "webfontloader": "^1.6.28"
   },
   "scripts": {
     "start": "react-scripts start",

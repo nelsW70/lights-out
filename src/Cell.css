@@ -1,9 +1,8 @@
 .Cell {
-  height: 100px;
-  width: 100px;
+  background-color: #3a4c54;
   border-radius: 1px;
-  background-color: #263238;
-  transition: background-color 0.25s ease;
+  transition: all, height 0.25s ease;
+  transition-property: height, background;
 }
 
 .Cell-lit {

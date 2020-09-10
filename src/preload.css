@@ -1,0 +1,58 @@
+@font-face {
+  font-family: neon;
+  font-style: normal;
+  font-weight: 400;
+  src: url(assets/neon.ttf);
+  font-display: swap;
+}
+
+.wf-loading #root {
+  display: none;
+}
+
+.wf-active #root {
+  display: block;
+}
+
+.wf-active #loading {
+  display: none;
+}
+
+#loading {
+  box-sizing: border-box;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+#loading .loader {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+}
+
+.loader:after {
+  content: " ";
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: loader 1.2s linear infinite;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

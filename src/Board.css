@@ -1,57 +1,71 @@
 .Board {
-  margin: 0 auto;
   border-radius: 10px;
-  box-shadow: 0 0 50px #fff, -10px 0 80px #f0f, 10px 0 80px #0ff;
+  animation: board-neon 1s ease 1 2s forwards;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 0rem 0.2rem 0rem 0rem;
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  gap: 1px;
 }
 
-table tr:first-child td:first-child {
+.Board .Cell {
+  padding: 1rem;
+}
+.Board .Cell::before {
+  content: '';
+  padding-top: 100%;
+  display: block;
+}
+
+.Board .Cell:first-child {
   border-radius: 10px 0 0 0 !important;
 }
-table tr:first-child td:last-child {
+.Board .Cell:nth-child(5) {
   border-radius: 0 10px 0 0 !important;
 }
-table tr:last-child td:first-child {
+.Board .Cell:nth-child(21) {
   border-radius: 0 0 0 10px !important;
 }
-table tr:last-child td:last-child {
+.Board .Cell:last-child {
   border-radius: 0 0 10px 0 !important;
-}
-
-@font-face {
-  font-family: neon;
-  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
 }
 
 .Board-title {
   display: flex;
-  align-items: center;
   justify-content: center;
+  font-size: 15vw;
+  line-height: 20vw;
 }
 
 .neon-orange {
   font-family: neon;
   color: #fb4264;
-  font-size: 80px;
   text-shadow: 0 0 3vw #f40a35;
-  animation: neon-orange 1s ease infinite;
-  -moz-animation: neon-orange 1s ease infinite;
-  -webkit-animation: neon-orange 1s ease infinite;
+  animation: neon-orange 2s ease 1 3s;
 }
 
 .neon-blue {
   font-family: neon;
   color: #426dfb;
-  font-size: 80px;
   text-shadow: 0 0 3vw #2356ff;
-  animation: neon-blue 2s linear infinite;
-  -moz-animation: neon-blue 2s linear infinite;
-  -webkit-animation: neon-blue 2s linear infinite;
-  -o-animation: neon-blue 2s linear infinite;
+  animation: neon-blue 2s ease infinite 4s;
 }
 
-.winner .neon-blue,
-.winner .neon-orange {
-  font-size: 200px;
+.winner {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 15vw;
+  line-height: 20vw;
+}
+
+@keyframes board-neon {
+  100% {
+    box-shadow: 0 0 50px #fff, -10px 0 80px #f0f, 10px 0 80px #0ff;
+  }
 }
 
 @keyframes neon-orange {
@@ -79,5 +93,48 @@ table tr:last-child td:last-child {
     text-shadow: 0 0 0.5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180,
       0 0 5vw #082180, 0 0 0.2vw #082180, 0.5vw 0.5vw 0.1vw #0a3940;
     color: #146c80;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .Board-title {
+    font-size: 9vw;
+    line-height: 9vw;
+  }
+
+  .Board {
+    max-width: 700px;
+  }
+
+  .neon-orange {
+    animation: neon-orange 1s ease infinite;
+    -moz-animation: neon-orange 1s ease infinite;
+    -webkit-animation: neon-orange 1s ease infinite;
+    -o-animation: neon-blue 2s linear infinite;
+  }
+
+  .neon-blue {
+    animation: flux 2s linear infinite;
+    -moz-animation: neon-blue 2s linear infinite;
+    -webkit-animation: neon-blue 2s linear infinite;
+    -o-animation: neon-blue 2s linear infinite;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .Board-title {
+    font-size: 7vw;
+    line-height: 7vw;
+  }
+
+  .Board {
+    max-width: 800px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .winner {
+    font-size: 7vw;
+    line-height: 7vw;
   }
 }

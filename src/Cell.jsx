@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { motion } from 'framer-motion';
+
 import './Cell.css';
 
 class Cell extends Component {
@@ -13,9 +15,18 @@ class Cell extends Component {
   }
 
   render() {
-    let classes = 'Cell' + (this.props.isLit ? ' Cell-lit' : '');
+    const { isLit, anim } = this.props;
+    let classes = 'Cell' + (isLit ? ' Cell-lit' : '');
 
-    return <td className={classes} onClick={this.handleClick} />;
+    return (
+      <motion.div
+        initial={anim.hidden}
+        animate={anim.show}
+        transition={isLit ? { delay: 1 } : { delay: 0.5 }}
+        className={classes}
+        onClick={this.handleClick}
+      />
+    );
   }
 }
 
