@@ -71,7 +71,6 @@ class Board extends Component {
     function flipCell(y, x) {
       // if this coord is actually on board, flip it
       if (x >= 0 && x < ncols && y >= 0 && y < nrows) {
-        console.log(y, x);
         board[y][x] = !board[y][x];
       }
     }
@@ -84,9 +83,11 @@ class Board extends Component {
 
     // win when every cell is turned off
     // determine is the game has been won
-    let hasWon = board.every(row => row.every(cell => !cell));
-
-    this.setState({ board: board, hasWon: hasWon });
+    let gameState = board.map(row => row.filter(cell => !cell)).flat().length;
+    gameState >= 24
+      ? this.setState({ hasWon: true })
+      : this.setState({ hasWon: false });
+    console.log(gameState);
   }
 
   /** Render game board or winning message. */
